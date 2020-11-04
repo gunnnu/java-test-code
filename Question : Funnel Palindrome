@@ -1,0 +1,81 @@
+public class Main
+{
+	public static void main(String[] args) {
+	    int input1=11;
+	    int temp=input1;
+	   // System.out.println(temp);
+	    while(true){
+	    if(isPalin(temp)){
+	     System.out.print(temp);
+	     break;
+	    }
+	    else{
+	        if(Integer.toString(temp).length()>2){
+	        temp=sumHalf(temp);
+	        }
+	        else{
+	            System.out.println(temp);
+	            break;   
+	        }
+	    }
+	    }
+	}
+	
+	public static Boolean isPalin(int a){
+	    int flag=0;
+	    char[] val= Integer.toString(a).toCharArray();
+	    for(int x=0;x<val.length/2;x++){
+	        if(val[x]!=val[val.length-x-1]){
+	            flag=1;
+	        };   
+	    }
+	    if(flag==0){
+	        return true;
+	    }
+	    else{
+	        return false;
+	    }
+	}
+	
+	public static int sumHalf(int b){
+	    char[] alpha=Integer.toString(b).toCharArray();
+	    String op="";
+	    int sumoftwo=0;
+	    if (alpha.length%2==0){
+    	    for (int j=1;j<alpha.length;j++){
+    	        sumoftwo=((int)alpha[j-1]+(int)alpha[j]-2*(int)'0');
+    	        int tem=sumoftwo;
+    	        if(Integer.toString(tem).length()==1){
+    	            op+=Integer.toString(tem);
+    	        }
+    	        else{
+    	            int o=tem%10;
+    	            tem=tem/10;
+    	            tem+=o;
+    	            op+=Integer.toString(tem);
+    	        }
+    	        j+=1;
+    	    }
+	    }
+	    else{
+	        for (int j=1;j<alpha.length-1;j++){
+    	        sumoftwo=((int)alpha[j-1]+(int)alpha[j]-2*(int)'0');
+    	        int tem=sumoftwo;
+    	        if(Integer.toString(tem).length()==1){
+    	            op+=Integer.toString(tem);
+    	        }
+    	        else{
+    	            int o=tem%10;
+    	            tem=tem/10;
+    	            tem+=o;
+    	            op+=Integer.toString(tem);
+    	        }
+    	        j+=1;
+    	    }
+    	    
+	    op+=Integer.toString(alpha[alpha.length-1]-(int)'0');
+	    }
+	   // System.out.println(op);
+	    return (Integer.parseInt(op));
+	} 
+}
